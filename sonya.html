@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id = 'topbar'>
+            <img id = 'sonchik1' src="./1.png"/>
+            <p>Привет, я - Сончик ! Приветствую тебя на моем сайте ! </p>
+        </div>
+
+        <div id = 'mainsection'>
+            <p>Кто я? : Я - игрок в Майнкрафт</p>
+            <p>Что я делаю ? : изучаю миры Майнкрафта и генирации миров.</p>
+            <p>Больше всего я люблю? : взрывать разные виды динамита.</p>
+            <button id="mainbutton" type="button" onclick = sayHello()>Поздороваться!</button>
+            <button id="mainbutton" type="button" onclick = explore()>Поехали!</button>
+            <button id="mainbutton" type="button" onclick=playGame()>Играть!</button>
+            <div id="loop-section">
+
+
+            </div>
+        </div>
+
+
+    </body>
+
+    <script> 
+
+        function explore () {
+            var locations = ['крепость энда','заброщенную шахту','деревню','океанский монумент'];
+            var items = ['око эндера','светящиеся ягоды','изумруды','золото'];
+            var chosenLocation = locations[Math.floor(Math.random() * locations.length)];
+            document.getElementById("loop-section") .innerHTML = "";
+            $('#loop-section').append("<p>Я пошла куда глаза глядят и встретила " + chosenLocation + ". Внутри я нашла: </p>")
+
+            for (i = 1; i < 4; i++) {
+
+                var foundItem = items[Math.floor(Math.random() *items.length)];
+
+                if(i==3) {
+                    $('#loop-section').append("<p>и "+foundItem+"</p>");
+                } else {
+                    $('#loop-section').append("<p>"+foundItem+",</p>");
+                }
+                
+            }
+        }
+
+        function sayHello() {
+                var name = prompt (" А как тебя зовут?") ;
+                if ( name !== null)
+                    window.alert ( "Я рада с тобой познакомиться, "+name+" ! Спасибо, что заглянул(-а) на мой сайт ! ") ;
+            
+        }
+
+        function playGame(){
+            var favCharacter=prompt("Твой любимый персонаж в Minecraft?");
+            var favMonster=prompt("Твой любимый монстр в Minecraft?");
+
+            if(favCharacter && favMonster){
+                var build = prompt(favCharacter+ " оказался в новых краях и начинает темнеть. Напечатай кровать, дом или ничего");
+                if(build=="ничего" || build==""){
+                    alert(favCharacter+" начинает игру как вдруг его схватил "+favMonster+".Начни игру сначала!");
+                }
+                if(build=="кровать"){
+                    alert(favCharacter+" крафтит кровать и отправляется спать. Ночью к нему подкрадывается "+favMonster+"! Начни сначала!");
+                }
+                if(build=="дом"){
+                    alert(favCharacter+" строит дом.Больше ему "+favMonster+" не страшен.");
+                    wolf=prompt("Появляется волк!"+favCharacter+" бежит или приручит волка?");
+                    if(wolf=="приручает"){
+                        alert(favCharacter+" приручил волка!Теперь все в безопасности.Отличная работа!");
+                    }else{
+                        alert(favCharacter+" бежит от волка и падает у порога! Начни сначала!");
+                    }
+                }
+            }
+        }
+
+        
+    </script>
+</html>
